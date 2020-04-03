@@ -21,7 +21,10 @@ class CardList extends React.Component {
   componentDidMount () {
     // setting a scroll event listener here for "inifinite scroll" feature
     this.scrollListener = window.addEventListener( 'scroll', e => {
-      this.handleScroll( e );
+      // only run handleScroll() if loading is false
+      if ( !this.state.isLoading ) {
+        this.handleScroll( e );
+      }
     });
 
     // this will fetch the initial set of cards to display
