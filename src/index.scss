@@ -1,0 +1,23 @@
+@import "./variables";
+
+body {
+  background: $background url(./table-bg.jpg) 0 0 repeat;
+  background-size: contain;
+  margin: 0;
+  font-family: $textFontFamily;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+button,
+input,
+li,
+p,
+ul,
+span {
+  font-family: $textFontFamily;
+}

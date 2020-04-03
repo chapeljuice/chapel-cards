@@ -1,0 +1,102 @@
+@import "./../variables";
+
+.header {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  position: fixed;
+    top: 0;
+  width: calc(100% - (#{$gutter} * 2));
+  z-index: 4;
+}
+
+.card-list {
+  align-items: center;
+  display: grid;
+  grid-gap: $gutter;
+  list-style: none;
+  margin: 0;
+  padding: 150px 0 0;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 1500px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media (min-width: 1800px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media (min-width: 2100px) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  @media (min-width: 2400px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @media (min-width: 2700px) {
+    grid-template-columns: repeat(9, 1fr);
+  }
+
+  @media (min-width: 3000px) {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+
+.card-search {
+  border: 2px solid #dedede;
+  border-radius: 4px;
+  font-size: 32px;
+  margin: 20px 0 0;
+  padding: 10px;
+  width: calc(100% - (#{$gutter} * 2));
+}
+
+.results-label {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0 30px 10px;
+  text-align: left;
+}
+
+.btn {
+  background: #69c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  padding: 10px 30px;
+  margin: 20px;
+
+  &:focus,
+  &:hover {
+    background: #069;
+  }
+}
+
+/* this class keeps elements accessible while not viewable to most users */
+.visually-hidden { 
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
