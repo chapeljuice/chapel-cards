@@ -9,9 +9,11 @@ class CardList extends React.Component {
     super(props);
     this.state = {
       cardsData: [],
+      filterType: '',
       isLoading: false,
       searchValue: '',
       searchPage: 1,
+      sortDirection: 'asc',
       totalCardCount: 0
     }
   }
@@ -83,6 +85,28 @@ class CardList extends React.Component {
     this.cardFetch( e.target.value );
   }
 
+  sortSearch ( sortDirection, filterType ) {
+    let newSortDirection;
+
+    // sorting cardsData by filter type selected
+    let sortedSearch = this.state.cardsData.sort(function(a, b){
+      if ( sortDirection === 'asc' ) {
+        // ascending results
+        newSortDirection = 'desc';
+        return a[filterType] - b[filterType];
+      } else {
+        // descendiong results
+        newSortDirection = 'asc';
+        return b[filterType] - a[filterType];
+      }
+    });
+
+    this.setState({
+      cardsData: sortedSearch,
+      sortDirection: newSortDirection
+    })
+  }
+
   render () {
     let renderedComponent;
 
@@ -101,8 +125,17 @@ class CardList extends React.Component {
             />
           </div>
 
-          <div className="results-label">
-            <p>Showing <span id="returnedResultsLabel">{this.state.cardsData.length}</span> cards out of <span id="totalResultsLabel">{this.state.totalCardCount}</span></p>
+          <div className="search-options">
+
+            <span className="results-label">
+              <p>Showing <span id="returnedResultsLabel">{this.state.cardsData.length}</span> cards out of <span id="totalResultsLabel">{this.state.totalCardCount}</span></p>
+            </span>
+
+            <span className="search-filters">
+              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'cost' )}>Cost</button>
+              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'power' )}>Power</button>
+              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'health' )}>Health</button>
+            </span>
           </div>
         </header>
 

@@ -13,6 +13,12 @@
   z-index: 4;
 }
 
+.search-options {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
 @-webkit-keyframes fadeInUp {
   from {
     transform: translate3d( 0, 40px, 0 )
@@ -111,6 +117,7 @@
   border: none;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
   font-size: 20px;
   padding: 10px 30px;
   margin: 20px;
@@ -118,6 +125,10 @@
   &:focus,
   &:hover {
     background: #069;
+  }
+
+  &.btn-filter {
+    padding: 5px 10px;
   }
 }
 
