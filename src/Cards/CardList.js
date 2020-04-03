@@ -106,7 +106,7 @@ class CardList extends React.Component {
           </div>
         </header>
 
-        <ul className="card-list">
+        <ul className="card-list animate">
           {this.state.cardsData.map( ( card, key ) => {
             return <CardListItem card={card} key={key} />;
           })}

@@ -13,6 +13,28 @@
   z-index: 4;
 }
 
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d( 0, 40px, 0 )
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d( 0, 0, 0 );
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d( 0, 40px, 0 )
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d( 0, 0, 0 );
+  }
+}
+
 .card-list {
   align-items: center;
   display: grid;
@@ -20,6 +42,15 @@
   list-style: none;
   margin: 0;
   padding: 150px 0 0;
+
+  &.animate {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
 
   @media (min-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
