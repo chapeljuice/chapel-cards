@@ -3,7 +3,7 @@
 ## About
 This is a grid of cards that shows the fronts of the cards. When a user hovers over a card, it flips over to reveal the back which contains information about the card such as name, text, set name, and type.
 
-20 cards should initially appear on the screen. Users can scroll or click "Load more" to load 20 more cards at a time. Users can also search via the search input at the top based on card name.
+20 cards should initially appear on the screen. Users can scroll or click "Load more" to load 20 more cards at a time. Users can also search via the search input at the top based on card name, and sort based on 'health', 'power', or 'cost.
 
 This project was built with ReactJS, SASS, Google Fonts, and the FontAwesome icon set.
 
