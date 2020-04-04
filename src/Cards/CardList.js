@@ -14,6 +14,7 @@ class CardList extends React.Component {
       searchValue: '',
       searchPage: 1,
       sortDirection: 'asc',
+      sortedBy: '',
       totalCardCount: 0
     }
   }
@@ -106,12 +107,36 @@ class CardList extends React.Component {
 
     this.setState({
       cardsData: sortedSearch,
-      sortDirection: newSortDirection
+      sortDirection: newSortDirection,
+      sortedBy: filterType
     })
   }
 
   render () {
     let renderedComponent;
+    let filterLabelCost = 'Cost';
+    let filterLabelHealth = 'Health';
+    let filterLabelPower = 'Power';
+
+    if ( this.state.sortedBy === 'cost' ) {
+      if ( this.state.sortDirection === 'asc' ) {
+        filterLabelCost = <span>Cost <i className="fas fa-caret-down"></i></span>;
+      } else {
+        filterLabelCost = <span>Cost <i className="fas fa-caret-up"></i></span>;
+      }
+    } else if ( this.state.sortedBy === 'health' ) {
+      if ( this.state.sortDirection === 'asc' ) {
+        filterLabelHealth = <span>Health <i className="fas fa-caret-down"></i></span>;
+      } else {
+        filterLabelHealth = <span>Health <i className="fas fa-caret-up"></i></span>;
+      }
+    } else if ( this.state.sortedBy === 'power' ) {
+      if ( this.state.sortDirection === 'asc' ) {
+        filterLabelPower = <span>Power <i className="fas fa-caret-down"></i></span>;
+      } else {
+        filterLabelPower = <span>Power <i className="fas fa-caret-up"></i></span>;
+      }
+    }
 
     if ( this.state.cardsData ) {
       renderedComponent = <div className="card-container">
@@ -135,9 +160,9 @@ class CardList extends React.Component {
             </span>
 
             <span className="search-filters">
-              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'cost' )}>Cost</button>
-              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'power' )}>Power</button>
-              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'health' )}>Health</button>
+              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'cost' )}>{filterLabelCost}</button>
+              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'power' )}>{filterLabelPower}</button>
+              <button className="btn btn-filter" onClick={() => this.sortSearch( this.state.sortDirection, 'health' )}>{filterLabelHealth}</button>
             </span>
           </div>
         </header>
@@ -147,7 +172,9 @@ class CardList extends React.Component {
             return <CardListItem card={card} key={key} />;
           })}
         </ul>
+
         {this.state.searchPage === 1  && (this.state.cardsData.length !== this.state.totalCardCount) ? <button className="btn" onClick={() => this.loadMore()}>Load more</button> : ''}
+
         {this.state.isLoading ? <div className="infinite-loader"><Loading /></div> : ''}
       </div>
     } else {
