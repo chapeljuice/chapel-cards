@@ -108,7 +108,7 @@
   color: white;
   font-size: 14px;
   font-weight: 600;
-  margin: 10px 0 30px 10px;
+  margin: 0 0 0 10px;
   text-align: left;
 }
 
@@ -128,7 +128,12 @@
   }
 
   &.btn-filter {
-    padding: 5px 10px;
+    background: none;
+    font-size: 14px;
+    text-decoration: underline;
+    display: inline-block;
+    margin: 0;
+    padding: 0 10px;
   }
 }
 
